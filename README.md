@@ -20,19 +20,24 @@ on investment greater than 2% in three months (classification). Here are the mod
 - XGBoost Classification
 
 ## Results
-- Regression:
-| Model | R2-score | MSE |
-| --- | --- | --- |
-| Linear Regression | 0.0118 | 0.022 |
-| Random Forest Regression | -0.32 | 0.03 |
-| XGBoost Regression | -0.33 | 0.03 |
 
-- Classification:
-| Model | Precision | Average ROI | Benchmark - SP500 |
-| --- | --- | --- | --- |
-| Logistic Regression | 0.54 | 12% | 5.7% |
-| Random Forest Classification | 0.47 | 5.4%   | 3.5% |
-| XGBoost Classification | 0.55 | 7.8% | 3.3% |
+### Regression
+
+| Model                  | R2-score | MSE  |
+|------------------------|----------|------|
+| Linear Regression      | 0.0118   | 0.022|
+| Random Forest Regression | -0.32  | 0.03 |
+| XGBoost Regression     | -0.33    | 0.03 |
+
+
+### Classification
+
+| Model                     | Precision | Average ROI | Benchmark - SP500 |
+|---------------------------|-----------|-------------|--------------------|
+| Logistic Regression       | 0.54      | 12%         | 5.7%               |
+| Random Forest Classification | 0.47  | 5.4%        | 3.5%               |
+| XGBoost Classification    | 0.55      | 7.8%        | 3.3%               |
+
 Average ROI refers to the average return on investment for the stocks classified as 'Buy' by the model. The benchmark was calculated as the average return of the S&P 500 for each investment that the model classified as 'Buy' (over the same period).
 
 ## Conclusion
