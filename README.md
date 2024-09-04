@@ -34,11 +34,24 @@ on investment greater than 2% in three months (classification). Here are the mod
 
 | Model                     | Precision | Average ROI | Benchmark - SP500 |
 |---------------------------|-----------|-------------|--------------------|
-| Logistic Regression       | 0.54      | 12%         | 5.7%               |
+| Logistic Regression       | 0.51      | 9.7%         | 5.1%               |
 | Random Forest Classification | 0.47  | 5.4%        | 3.5%               |
 | XGBoost Classification    | 0.55      | 7.8%        | 3.3%               |
 
 Average ROI refers to the average return on investment for the stocks classified as 'Buy' by the model. The benchmark was calculated as the average return of the S&P 500 for each investment that the model classified as 'Buy' (over the same period).
+
+#### Example Strategy Backtests Results
+In this simple example strategy, a stock is purchased for up to 20% of the portfolio value if, in the new month, it is classified as 'Buy' and is not currently in the portfolio. A stock is sold in three cases:
+- if in the new month the stock is no longer classified as 'Buy',
+- if a stop loss occurs, meaning that in the new month the stocks' price drops by more than 5%,
+- at the end of the backtest, i.e., in May 2024, all stocks in the portfolio are sold at the last available price.
+Here are results of the backtests for each classification model, compared to SP500:
+
+| Model | 01.2019 - 05.2024 Return |
+|-------|--------------------------|
+| Benchmark - SP500 | 105% |
+| Logistic Regression | 171% |
+
 
 ## Conclusion
 As seen, classification provides much more promising results than regression, which is justified given the complexity of the stock market. Predicting the exact stock price using regression is far more complex than simply predictiong whether the return on that stock will outperform the return of the S&P 500 by classification. 
