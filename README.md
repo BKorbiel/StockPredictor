@@ -19,8 +19,10 @@ on investment greater than 2% in three months (classification). Here are the mod
 - Random Forest Classification
 - XGBoost Classification
 
-## Results
+The models show weak performance in the context of machine learning (e.g., low precision and recall for the 'Buy' class in classification models), but the primary goal is not to achieve perfect model metrics. Instead, the focus is on maximizing the returns from the investment strategy built based on the model, compared to a benchmark (in this case, the S&P 500).
+Additionally, please note that the simple strategy presented in the Results section is tailored to the logistic regression model, which is why the other models showed weaker results. However, I believe this does not mean those models are useless, but rather that a different strategy needs to be built based on them to better fit their strengths. I base this conclusion on the 'Average ROI' metric described in the Results section. Every classification model has a higher 'Average ROI' than the S&P 500 benchmark, indicating that the stocks classified as 'Buy' by these models did, in fact, significantly outperform the market (on average).
 
+## Results
 ### Regression
 
 | Model                  | R2-score | MSE  |
