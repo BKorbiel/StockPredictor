@@ -5,6 +5,7 @@
 * [General Info](#general-information)
 * [Results](#results)
 * [Conclusion](#conclusion)
+* [Future Improvements Ideas](#future-improvements-ideas)
 
 ## General Information
 In this project, several machine learning models are run to create a model
@@ -44,7 +45,7 @@ Additionally, please note that the simple strategy presented below is tailored t
 
 Average ROI refers to the average return on investment for the stocks classified as 'Buy' by the model. The benchmark was calculated as the average return of the S&P 500 for each investment that the model classified as 'Buy' (over the same period).
 
-#### Example Strategy Backtests Results
+#### Example Strategy Backtests Results (Classification Only)
 In this simple example strategy, a stock is purchased for up to 20% of the portfolio value if, in the new month, it is classified as 'Buy' and is not currently in the portfolio. A stock is sold in three cases:
 - if in the new month the stock is no longer classified as 'Buy',
 - if a stop loss occurs, meaning that in the new month the stocks' price drops by more than 5%,
@@ -64,3 +65,22 @@ For this simple strategy, ordinary logistic regression turned out to be the best
 ## Conclusion
 As seen, classification provides much more promising results than regression, which is justified given the complexity of the stock market. Predicting the exact stock price using regression is far more complex than simply predictiong whether the return on that stock will outperform the return of the S&P 500 by classification. 
 After running classification models on a larger dataset, including several recession periods, the models were able to outperform the S&P 500 during analogous periods on the test set. Of course, this is a significant simplification, as the model itself is not yet a complete investment strategy, but merely a foundation for one. Nevertheless, I believe that with these models, it is possible to build a profitable investment strategy that outperforms the market over the long term.
+
+## Future Improvements Ideas
+
+#### More Diverse Strategies
+Currently, I have created only one strategy that aligns with the logistic regression predictions but is only moderately compatible with other models. Developing new, diverse strategies and conducting backtests on them is a worthwhile idea to consider.
+
+#### Backtest as a Loss Function
+Currently, the models are trained to optimize parameters that are not necessarily the most important, such as precision. The models should be trained to generate profits within the strategy, so it is worthwhile to consider using backtest results as a loss function.
+
+#### Other Models, More Predictors
+It is worth considering more models. For example, in the near future, I plan to implement a genetic algorithm that would learn to classify stocks. Additionally, it would be beneficial to identify and include other technical or fundamental indicators as predictors.
+
+#### Enhancing Backtests
+Firstly, backtests operate on monthly data, using data from the first day of each month. This means that every decision — such as stop-loss orders — in the backtest simulation is made only at the beginning of each month. In the real world, a stop-loss order is executed automatically when the price drops to the order price. Therefore, it is advisable to conduct backtests using daily data, which would allow stop-loss orders to be executed on any day, rather than just at the beginning of the month.
+
+Secondly, it would be beneficial to increase the reliability of the backtests by repeating them on slightly modified data with a small amount of noise introduced. This will enhance the credibility of the model in terms of ensuring that it is not overfitted.
+
+#### Testing Different Lengths for the Moving Average Predictor
+Currently, a 20-day Moving Average is used for predictions. In the logistic regression model, it has a negative weight, which is counterintuitive. It would be worthwhile to consider testing the results after applying different lengths for the Moving Average, such as 50 days.
