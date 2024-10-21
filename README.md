@@ -19,6 +19,12 @@ on investment greater than 2% in three months (classification). Here are the mod
 - Logistic Regression
 - Random Forest Classification
 - XGBoost Classification
+- Classification by Genetic Algorithm (in three versions)
+
+
+The **Genetic Algorithm** was implemented in three versions. In the first version, the chromosome consists of weights for each of the predictors (similar to logistic regression). In the second version, the chromosome consists of baselines that each predictor must meet for a stock to be classified as a "Buy". In the third version, the chromosome also consisted of baselines, but in addition, logistic regression was applied to the selected companies.
+
+For each version of the chromosome, the fitness function was a backtest on historical data.
 
 ## Results
 
@@ -59,6 +65,7 @@ Here are results of the backtests for each classification model, compared to SP5
 | Logistic Regression | 171% |
 | Random Forest Classification | 71% |
 | XGBoost Classification | 81% |
+| Genetic Algorithm | Mostly 70-90%, best chromosomes: 140-155% |
 
 For this simple strategy, ordinary logistic regression turned out to be the best. I believe this is because, with logistic regression, the classification of stocks as 'Buy' or not changes less frequently, which means that in this particular strategy, stocks are held longer, allowing profits to grow. However, this does not mean that XGBoost and Random Forest models are useless — they just don't fit this specific strategy. I think that with the right strategy, these models could yield results similar to logistic regression in this example.
 
@@ -75,7 +82,7 @@ Currently, I have created only one strategy that aligns with the logistic regres
 Currently, the models are trained to optimize parameters that are not necessarily the most important, such as precision. The models should be trained to generate profits within the strategy, so it is worthwhile to consider using backtest results as a loss function.
 
 #### Other Models, More Predictors
-It is worth considering more models. For example, in the near future, I plan to implement a genetic algorithm that would learn to classify stocks. Additionally, it would be beneficial to identify and include other technical or fundamental indicators as predictors.
+It is worth considering more models. Additionally, it would be beneficial to identify and include other technical or fundamental indicators as predictors.
 
 #### Enhancing Backtests
 Firstly, backtests operate on monthly data, using data from the first day of each month. This means that every decision — such as stop-loss orders — in the backtest simulation is made only at the beginning of each month. In the real world, a stop-loss order is executed automatically when the price drops to the order price. Therefore, it is advisable to conduct backtests using daily data, which would allow stop-loss orders to be executed on any day, rather than just at the beginning of the month.
